@@ -25,8 +25,18 @@ public class CollectableInteraction : Interactable
 
     public override void Collectable()
     {
-        PlayerInventory.Instance.AddItem(item);
-        Destroy(gameObject);
+        // Show inspect window
+        if (ItemWindow.Instance.IsOpenWindow == false)
+        {
+            ItemWindow.Instance.EnableWindow(item);
+        }
+        // Close inspect window and add item to inventory
+        else
+        {
+            ItemWindow.Instance.DisableWindow();
+            PlayerInventory.Instance.AddItem(item);
+            Destroy(gameObject);
+        }
     }
 
     public override void Event()

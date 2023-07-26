@@ -9,10 +9,13 @@ public class Item : ScriptableObject
     [TextArea(10, 100)]
     public string description;
 
+    public GameObject itemPrefab;
+
     public void Init(Item newItem)
     {
         name = newItem.name + "#" + GetInstanceID();
         itemName = newItem.itemName;
         description = newItem.description;
+        itemPrefab = newItem.itemPrefab;
     }
 }
