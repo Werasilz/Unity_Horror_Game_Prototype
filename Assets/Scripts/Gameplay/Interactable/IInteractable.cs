@@ -4,4 +4,14 @@ public abstract class Interactable : MonoBehaviour
 {
     public GameObject canvas;
     public abstract void Interact(PlayerInteraction playerInteraction);
+    public abstract void Event();
+    public abstract void Collectable();
+    public abstract void Note();
+}
+
+public enum InteractionType
+{
+    Event,
+    Collectable,
+    Note,
 }
