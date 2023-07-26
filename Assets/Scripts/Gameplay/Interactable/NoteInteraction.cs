@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NoteInteraction : Interactable
 {
@@ -6,6 +8,11 @@ public class NoteInteraction : Interactable
 
     [Header("Note")]
     [SerializeField] private Note note;
+
+    [Header("Event")]
+    [SerializeField] private EventType eventType;
+    [SerializeField] private EventAction[] eventActions;
+    private bool isEventAction;
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
@@ -32,6 +39,35 @@ public class NoteInteraction : Interactable
 
     public override void Event()
     {
+        if (isEventAction == false && eventActions.Length > 0)
+        {
+            StartCoroutine(StartEvent());
+        }
+
+        IEnumerator StartEvent()
+        {
+            isEventAction = true;
+            canvas.SetActive(eventType == EventType.OneTimeEvent ? false : true);
+
+            // Call all events
+            for (int i = 0; i < eventActions.Length; i++)
+            {
+                yield return new WaitForSeconds(eventActions[i].delay);
+                eventActions[i].action?.Invoke();
+            }
+
+            switch (eventType)
+            {
+                case EventType.OneTimeEvent:
+                    // Disable this event interaction
+                    this.enabled = false;
+                    break;
+                case EventType.ManyTimeEvent:
+                    // Reset flag for next event
+                    isEventAction = false;
+                    break;
+            }
+        }
     }
 
     public override void Note()
@@ -43,6 +79,7 @@ public class NoteInteraction : Interactable
         else
         {
             NoteWindow.Instance.DisableWindow();
+            Event();
         }
     }
 

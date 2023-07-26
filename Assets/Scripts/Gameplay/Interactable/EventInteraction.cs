@@ -10,7 +10,7 @@ public class EventInteraction : Interactable
     [Header("Event")]
     [SerializeField] private EventType eventType;
     [SerializeField] private EventAction[] eventActions;
-    private bool isAction;
+    private bool isEventAction;
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
@@ -37,14 +37,14 @@ public class EventInteraction : Interactable
 
     public override void Event()
     {
-        if (isAction == false)
+        if (isEventAction == false && eventActions.Length > 0)
         {
             StartCoroutine(StartEvent());
         }
 
         IEnumerator StartEvent()
         {
-            isAction = true;
+            isEventAction = true;
             canvas.SetActive(eventType == EventType.OneTimeEvent ? false : true);
 
             // Call all events
@@ -62,7 +62,7 @@ public class EventInteraction : Interactable
                     break;
                 case EventType.ManyTimeEvent:
                     // Reset flag for next event
-                    isAction = false;
+                    isEventAction = false;
                     break;
             }
         }
@@ -75,17 +75,17 @@ public class EventInteraction : Interactable
     public override void Hide()
     {
     }
+}
 
-    [Serializable]
-    public struct EventAction
-    {
-        public float delay;
-        public UnityEvent action;
-    }
+[Serializable]
+public struct EventAction
+{
+    public float delay;
+    public UnityEvent action;
+}
 
-    public enum EventType
-    {
-        OneTimeEvent,
-        ManyTimeEvent,
-    }
+public enum EventType
+{
+    OneTimeEvent,
+    ManyTimeEvent,
 }
