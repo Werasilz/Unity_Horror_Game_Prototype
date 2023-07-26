@@ -95,6 +95,7 @@ public class ThirdPersonController : MonoBehaviour
     private int _animIDJump;
     private int _animIDFreeFall;
     private int _animIDMotionSpeed;
+    private int _animIDCrouch;
 
 #if ENABLE_INPUT_SYSTEM
     private PlayerInput _playerInput;
@@ -170,6 +171,7 @@ public class ThirdPersonController : MonoBehaviour
         _animIDJump = Animator.StringToHash("Jump");
         _animIDFreeFall = Animator.StringToHash("FreeFall");
         _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        _animIDCrouch = Animator.StringToHash("Crouch");
     }
 
     private void GroundedCheck()
@@ -210,8 +212,29 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Move()
     {
+        if (_input.crouch)
+        {
+            if (_animator.GetBool(_animIDCrouch))
+            {
+                _animator.SetBool(_animIDCrouch, false);
+            }
+            else
+            {
+                _animator.SetBool(_animIDCrouch, true);
+            }
+        }
+
+        float targetSpeed = 0;
+
         // set target speed based on move speed, sprint speed and if sprint is pressed
-        float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+        if (_animator.GetBool(_animIDCrouch))
+        {
+            targetSpeed = MoveSpeed;
+        }
+        else
+        {
+            targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+        }
 
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
