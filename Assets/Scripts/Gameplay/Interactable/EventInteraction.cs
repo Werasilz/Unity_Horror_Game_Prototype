@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EventInteraction : Interactable
 {
+    [Header("Interaction")]
     public InteractionType interactionType = InteractionType.Event;
 
     public override void Interact(PlayerInteraction playerInteraction)

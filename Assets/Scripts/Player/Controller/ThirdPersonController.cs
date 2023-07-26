@@ -7,9 +7,6 @@ using UnityEngine.InputSystem;
  */
 
 [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM
-[RequireComponent(typeof(PlayerInput))]
-#endif
 public class ThirdPersonController : MonoBehaviour
 {
     [Header("Player")]
@@ -136,9 +133,10 @@ public class ThirdPersonController : MonoBehaviour
 
         _hasAnimator = TryGetComponent(out _animator);
         _controller = GetComponent<CharacterController>();
-        _input = GetComponent<PlayerControllerInputAction>();
+        _input = PlayerControllerInputAction.Instance;
+        print(_input);
 #if ENABLE_INPUT_SYSTEM
-        _playerInput = GetComponent<PlayerInput>();
+        _playerInput = PlayerControllerInputAction.Instance.GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -191,6 +189,8 @@ public class ThirdPersonController : MonoBehaviour
 
     private void CameraRotation()
     {
+        if (Time.timeScale == 0) return;
+
         // if there is an input and camera position is not fixed
         if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
         {

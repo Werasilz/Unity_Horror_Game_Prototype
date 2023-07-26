@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class NoteInteraction : Interactable
 {
+    [Header("Interaction")]
     public InteractionType interactionType = InteractionType.Note;
+    [SerializeField] private Note note;
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
@@ -30,5 +32,20 @@ public class NoteInteraction : Interactable
 
     public override void Note()
     {
+        if (NoteWindow.Instance.IsOpenNote == false)
+        {
+            NoteWindow.Instance.EnableWindow(note.header, note.description);
+        }
+        else
+        {
+            NoteWindow.Instance.DisableWindow();
+        }
+    }
+
+    private void Update()
+    {
+        if (PlayerControllerInputAction.Instance.interact)
+        {
+        }
     }
 }

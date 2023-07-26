@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f622b3cf29ca14e9c9d22a3c63e0d9, type: 3}
+  m_Name: NoteTest
+  m_EditorClassIdentifier: 
+  header: RESIDENT EVIL 8 VILLAGE
+  description: "Resident Evil 8 Village Shadows Of Rose DLC Walkthrough Part 1 and
+    until the last part will include the full Resident Evil 8 Village Shadows Of
+    Rose DLC Gameplay on PC. This Resident Evil 8 Village Shadows Of Rose DLC Gameplay
+    is recorded in 4K 60FPS on PC and will include the full game, all endings and
+    all boss fights. \r\n"

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CollectableInteraction : Interactable
 {
+    [Header("Interaction")]
     public InteractionType interactionType = InteractionType.Collectable;
 
     public override void Interact(PlayerInteraction playerInteraction)

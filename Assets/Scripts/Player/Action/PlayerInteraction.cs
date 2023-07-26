@@ -10,7 +10,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start()
     {
-        m_input = GetComponent<PlayerControllerInputAction>();
+        m_input = PlayerControllerInputAction.Instance;
     }
 
     void Update()
