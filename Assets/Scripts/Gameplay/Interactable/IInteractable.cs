@@ -7,6 +7,7 @@ public abstract class Interactable : MonoBehaviour
     public abstract void Event();
     public abstract void Collectable();
     public abstract void Note();
+    public abstract void Hide();
 }
 
 public enum InteractionType
@@ -14,4 +15,5 @@ public enum InteractionType
     Event,
     Collectable,
     Note,
+    Hide,
 }

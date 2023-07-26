@@ -20,6 +20,9 @@ public class CollectableInteraction : Interactable
             case InteractionType.Note:
                 Note();
                 break;
+            case InteractionType.Hide:
+                Hide();
+                break;
         }
     }
 
@@ -44,6 +47,10 @@ public class CollectableInteraction : Interactable
     }
 
     public override void Note()
+    {
+    }
+
+    public override void Hide()
     {
     }
 }

@@ -20,6 +20,9 @@ public class NoteInteraction : Interactable
             case InteractionType.Note:
                 Note();
                 break;
+            case InteractionType.Hide:
+                Hide();
+                break;
         }
     }
 
@@ -41,5 +44,9 @@ public class NoteInteraction : Interactable
         {
             NoteWindow.Instance.DisableWindow();
         }
+    }
+
+    public override void Hide()
+    {
     }
 }

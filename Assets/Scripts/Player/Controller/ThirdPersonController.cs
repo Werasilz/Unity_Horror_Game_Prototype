@@ -70,6 +70,9 @@ public class ThirdPersonController : MonoBehaviour
     [Tooltip("For locking the camera position on all axis")]
     public bool LockCameraPosition = false;
 
+    [Header("Player Character")]
+    public GameObject character;
+
     // cinemachine
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
@@ -373,6 +376,13 @@ public class ThirdPersonController : MonoBehaviour
         if (lfAngle < -360f) lfAngle += 360f;
         if (lfAngle > 360f) lfAngle -= 360f;
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
+    }
+
+    public void EnableController(bool value)
+    {
+        _animator.enabled = value;
+        _controller.enabled = value;
+        character.SetActive(value);
     }
 
     private void OnDrawGizmosSelected()
