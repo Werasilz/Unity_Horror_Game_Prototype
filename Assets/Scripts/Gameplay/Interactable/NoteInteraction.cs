@@ -41,11 +41,4 @@ public class NoteInteraction : Interactable
             NoteWindow.Instance.DisableWindow();
         }
     }
-
-    private void Update()
-    {
-        if (PlayerControllerInputAction.Instance.interact)
-        {
-        }
-    }
 }

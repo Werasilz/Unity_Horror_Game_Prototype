@@ -4,6 +4,7 @@ public class CollectableInteraction : Interactable
 {
     [Header("Interaction")]
     public InteractionType interactionType = InteractionType.Collectable;
+    [SerializeField] private Item item;
 
     public override void Interact(PlayerInteraction playerInteraction)
     {
@@ -23,6 +24,8 @@ public class CollectableInteraction : Interactable
 
     public override void Collectable()
     {
+        PlayerInventory.Instance.AddItem(item);
+        Destroy(gameObject);
     }
 
     public override void Event()
