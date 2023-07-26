@@ -14,6 +14,7 @@ public class NoteWindow : SceneSingleton<NoteWindow>
         IsOpenNote = true;
         window.SetActive(true);
 
+        // Update information
         text_Header.text = header;
         text_Description.text = description;
     }
@@ -25,6 +26,8 @@ public class NoteWindow : SceneSingleton<NoteWindow>
             IsOpenNote = false;
             Time.timeScale = 1;
             window.SetActive(false);
+
+            // Clear information
             text_Header.text = "";
             text_Description.text = "";
         }

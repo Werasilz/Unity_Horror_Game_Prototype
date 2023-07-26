@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class CollectableInteraction : Interactable
 {
-    [Header("Interaction")]
-    public InteractionType interactionType = InteractionType.Collectable;
+    private InteractionType interactionType = InteractionType.Collectable;
+
+    [Header("Collectable")]
     [SerializeField] private Item item;
 
     public override void Interact(PlayerInteraction playerInteraction)

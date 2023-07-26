@@ -47,7 +47,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 closestCollider.gameObject.TryGetComponent<Interactable>(out var interactableObject);
 
-                if (interactableObject != null)
+                if (interactableObject != null && interactableObject.enabled)
                 {
                     print("[Interact] " + interactableObject.GetType().Name);
                     interactableObject.Interact(this);
@@ -61,7 +61,11 @@ public class PlayerInteraction : MonoBehaviour
         if (other.gameObject.CompareTag("Interactable"))
         {
             Interactable interactable = other.GetComponent<Interactable>();
-            interactable.canvas.SetActive(true);
+
+            if (interactable.enabled)
+            {
+                interactable.canvas.SetActive(true);
+            }
         }
     }
 
@@ -70,6 +74,7 @@ public class PlayerInteraction : MonoBehaviour
         if (other.gameObject.CompareTag("Interactable"))
         {
             Interactable interactable = other.GetComponent<Interactable>();
+
             interactable.canvas.SetActive(false);
         }
     }

@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class NoteInteraction : Interactable
 {
-    [Header("Interaction")]
-    public InteractionType interactionType = InteractionType.Note;
+    private InteractionType interactionType = InteractionType.Note;
+
+    [Header("Note")]
     [SerializeField] private Note note;
 
     public override void Interact(PlayerInteraction playerInteraction)
