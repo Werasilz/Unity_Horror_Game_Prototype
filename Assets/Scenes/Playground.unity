@@ -2283,6 +2283,8 @@ MonoBehaviour:
   canvas: {fileID: 284840634}
   boxCollider: {fileID: 2050082922}
   exitPoint: {fileID: 1092879253}
+  eventType: 0
+  eventActions: []
 --- !u!135 &304402144
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6902,22 +6904,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 670221111}
   note: {fileID: 11400000, guid: d1b3b56a10ee0f74ea2c9f2b8f000792, type: 2}
-  OnFinishedAction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 158985346}
-        m_TargetAssemblyTypeName: DialogueWindow, Assembly-CSharp
-        m_MethodName: EnableWindow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: f27c1cb5ac96f4c41bd4175888d29991,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  eventType: 0
+  eventActions: []
 --- !u!135 &1225810030
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7460,6 +7448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1434087477}
   item: {fileID: 11400000, guid: c8179495dc14f65468693640a7f72309, type: 2}
+  eventType: 0
+  eventActions: []
 --- !u!135 &1308947115
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8993,6 +8983,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1124827374}
   item: {fileID: 11400000, guid: 3151cb14bf217824e9dae5b442f37fdb, type: 2}
+  eventType: 0
+  eventActions: []
 --- !u!135 &1567364438
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9396,9 +9388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 881049131}
   note: {fileID: 11400000, guid: d1b3b56a10ee0f74ea2c9f2b8f000792, type: 2}
-  OnFinishedAction:
-    m_PersistentCalls:
-      m_Calls: []
+  eventType: 0
+  eventActions: []
 --- !u!1 &1626898271
 GameObject:
   m_ObjectHideFlags: 0
