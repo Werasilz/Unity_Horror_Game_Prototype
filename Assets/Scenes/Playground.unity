@@ -3291,6 +3291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 6154631259272320941}
+  chaseSpeed: 2.5
+  chaseDistance: 10
 --- !u!1 &517059846
 GameObject:
   m_ObjectHideFlags: 0
@@ -8895,7 +8897,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 6154631259272320941}
   patrolSpeed: 2
-  reachedDistance: 0.5
   currentWaypointIndex: 0
   waypoints:
   - {fileID: 485059859}
@@ -17408,6 +17409,11 @@ MonoBehaviour:
   - {fileID: 1468408741}
   - {fileID: 496801500}
   - {fileID: 1187399575}
+  player: {fileID: 0}
+  scanRadius: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!195 &6154631259272320942
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17418,11 +17424,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 200
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -17440,7 +17446,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}

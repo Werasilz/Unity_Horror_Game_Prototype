@@ -11,7 +11,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private AIStateMachine currentState;
 
     [Header("States")]
-    [SerializeField] private AIStateMachine[] stateMachines;
+    public AIStateMachine[] stateMachines;
+
+    [Header("Target")]
+    public GameObject player;
+
+    [Header("Scan Settings")]
+    [SerializeField] private float scanRadius;
+    [SerializeField] private LayerMask playerLayer;
 
     private void Start()
     {
@@ -26,6 +33,10 @@ public class EnemyAI : MonoBehaviour
         {
             PatrolState patrolStateInstance = (PatrolState)stateMachines[1];
             patrolStateInstance.FindClosetWaypoint();
+        }
+        else
+        {
+            Debug.LogError("State Machine index[1] is not Patrol state");
         }
     }
 
@@ -73,6 +84,29 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+
+    public GameObject FindPlayer()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, scanRadius, playerLayer);
+
+        if (colliders.Length > 0)
+        {
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                return colliders[i].gameObject;
+            }
+        }
+
+        return null;
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, scanRadius);
+    }
+#endif
 }
 
 public enum AIStateEnum

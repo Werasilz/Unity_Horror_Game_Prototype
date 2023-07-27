@@ -4,13 +4,13 @@ public class PatrolState : AIStateMachine
 {
     [Header("Patrol")]
     [SerializeField] private float patrolSpeed;
-    [SerializeField] private float reachedDistance;
     [SerializeField] private int currentWaypointIndex;
     [SerializeField] private Transform[] waypoints;
 
     public override void EnterState()
     {
         // Set destination to waypoint
+        enemyAI.Agent.isStopped = false;
         enemyAI.Agent.speed = patrolSpeed;
         enemyAI.Agent.SetDestination(waypoints[currentWaypointIndex].position);
     }
@@ -45,8 +45,17 @@ public class PatrolState : AIStateMachine
 
     public override void UpdateState()
     {
+        // Found player while patrolling
+        enemyAI.player = enemyAI.FindPlayer();
+
+        if (enemyAI.player != null)
+        {
+            enemyAI.SetState(AIStateEnum.Chase);
+            return;
+        }
+
         // Reached the waypoint then go to the next waypoint
-        if (enemyAI.Agent.remainingDistance < reachedDistance)
+        if (enemyAI.Agent.remainingDistance <= enemyAI.Agent.stoppingDistance)
         {
             // Set next waypoint
             currentWaypointIndex += 1;
