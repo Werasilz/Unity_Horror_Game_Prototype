@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     private EnemyController m_enemyController;
-    private NavMeshAgent m_agent;
-    public NavMeshAgent Agent => m_agent;
+    public NavMeshAgent Agent { get; private set; }
+    public Animator Animator { get; private set; }
 
     [Header("AI State")]
     [SerializeField] private AIStateMachine currentState;
@@ -23,7 +23,8 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         m_enemyController = GetComponent<EnemyController>();
-        m_agent = GetComponent<NavMeshAgent>();
+        Agent = GetComponent<NavMeshAgent>();
+        Animator = GetComponent<Animator>();
 
         // Start the state by waiting
         SetState(AIStateEnum.Wait);
@@ -76,7 +77,7 @@ public class EnemyAI : MonoBehaviour
 
     private void UpdateState()
     {
-        if (m_agent.enabled)
+        if (Agent.enabled)
         {
             if (currentState != null)
             {

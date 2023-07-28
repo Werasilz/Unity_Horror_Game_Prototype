@@ -378,11 +378,12 @@ public class ThirdPersonController : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
-    public void EnableController(bool value)
+    public void EnableController(bool value, bool lockCamera)
     {
         _animator.enabled = value;
         _controller.enabled = value;
         character.SetActive(value);
+        LockCameraPosition = lockCamera;
     }
 
     private void OnDrawGizmosSelected()

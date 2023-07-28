@@ -91,14 +91,14 @@ public class HideInteraction : Interactable
                 boxCollider.isTrigger = true;
                 canvas.SetActive(false);
 
-                thirdPersonController.EnableController(false);
+                thirdPersonController.EnableController(false, false);
                 thirdPersonController.transform.position = transform.position;
             }
             else
             {
                 isHiding = false;
                 thirdPersonController.transform.position = exitPoint.position;
-                thirdPersonController.EnableController(true);
+                thirdPersonController.EnableController(true, false);
 
                 yield return new WaitForSeconds(0.5f);
 
