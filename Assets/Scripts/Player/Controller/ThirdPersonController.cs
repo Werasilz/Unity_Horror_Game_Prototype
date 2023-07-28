@@ -224,11 +224,16 @@ public class ThirdPersonController : MonoBehaviour
                 _animator.SetBool(_animIDCrouch, false);
                 _playerCore.isCrouching = false;
 
+                _controller.height = 1.8f;
+                _controller.center = new Vector3(0, 0.93f, 0);
             }
             else
             {
                 _animator.SetBool(_animIDCrouch, true);
                 _playerCore.isCrouching = true;
+
+                _controller.height = 1f;
+                _controller.center = new Vector3(0, 0.57f, 0);
             }
         }
 
