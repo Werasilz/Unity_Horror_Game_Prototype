@@ -8,26 +8,38 @@ public class EventInteraction : Interactable
     private InteractionType interactionType = InteractionType.Event;
 
     [Header("Event")]
+    [SerializeField] private EventTriggerType eventTriggerType;
     [SerializeField] private EventType eventType;
     [SerializeField] private EventAction[] eventActions;
     private bool isEventAction;
 
+    private void Start()
+    {
+        if (eventTriggerType == EventTriggerType.OnStart)
+        {
+            Event();
+        }
+    }
+
     public override void Interact(PlayerInteraction playerInteraction)
     {
-        switch (interactionType)
+        if (eventTriggerType == EventTriggerType.OnInteract)
         {
-            case InteractionType.Event:
-                Event();
-                break;
-            case InteractionType.Collectable:
-                Collectable();
-                break;
-            case InteractionType.Note:
-                Note();
-                break;
-            case InteractionType.Hide:
-                Hide();
-                break;
+            switch (interactionType)
+            {
+                case InteractionType.Event:
+                    Event();
+                    break;
+                case InteractionType.Collectable:
+                    Collectable();
+                    break;
+                case InteractionType.Note:
+                    Note();
+                    break;
+                case InteractionType.Hide:
+                    Hide();
+                    break;
+            }
         }
     }
 
@@ -88,4 +100,10 @@ public enum EventType
 {
     OneTimeEvent,
     ManyTimeEvent,
+}
+
+public enum EventTriggerType
+{
+    OnStart,
+    OnInteract
 }

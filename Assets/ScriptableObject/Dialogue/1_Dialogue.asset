@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08d90cd65456f584d8cfeaeefc469d82, type: 3}
-  m_Name: DialogueTest
+  m_Name: 1_Dialogue
   m_EditorClassIdentifier: 
-  dialogueIndex: 0
+  dialogueIndex: 1
   dialogueSets:
   - delay: 2
-    dialogue: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit,'
-  - delay: 2
-    dialogue: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-  - delay: 2
-    dialogue: Ut enim ad minim veniam, quis nostrud exercitation ullamco labori
-  - delay: 2
-    dialogue: 'Duis aute irure dolor in reprehenderit in voluptate velit esse '
+    dialogue: Hmm, I need the find the way out
