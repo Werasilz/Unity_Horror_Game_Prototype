@@ -62,7 +62,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Interactable interactable = other.GetComponent<Interactable>();
 
-            if (interactable.enabled)
+            if (interactable != null && interactable.enabled)
             {
                 interactable.canvas.SetActive(true);
             }

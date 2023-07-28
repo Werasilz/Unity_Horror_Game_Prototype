@@ -5,6 +5,7 @@ public class PlayerInventory : SceneSingleton<PlayerInventory>
 {
     [Header("Item List")]
     [SerializeField] private List<Item> items;
+    public List<Item> GetItems => items;
 
     private void Start()
     {
