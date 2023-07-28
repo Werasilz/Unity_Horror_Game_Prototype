@@ -32004,7 +32004,7 @@ GameObject:
   - component: {fileID: 1929365911}
   - component: {fileID: 1929365913}
   - component: {fileID: 1929365912}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: 'UI Directional Light '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
