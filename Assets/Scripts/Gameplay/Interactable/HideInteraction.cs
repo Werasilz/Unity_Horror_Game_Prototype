@@ -80,6 +80,7 @@ public class HideInteraction : Interactable
     public override void Hide()
     {
         ThirdPersonController thirdPersonController = playerInteraction.GetComponent<ThirdPersonController>();
+        PlayerCore playerCore = playerInteraction.GetComponent<PlayerCore>();
         StartCoroutine(StartHide());
 
         IEnumerator StartHide()
@@ -88,20 +89,27 @@ public class HideInteraction : Interactable
             {
                 isHiding = true;
 
+                // Hiding spot
                 boxCollider.isTrigger = true;
                 canvas.SetActive(false);
 
+                // Player
+                playerCore.isHiding = true;
                 thirdPersonController.EnableController(false, false);
                 thirdPersonController.transform.position = transform.position;
             }
             else
             {
                 isHiding = false;
+
+                // Player
+                playerCore.isHiding = false;
                 thirdPersonController.transform.position = exitPoint.position;
                 thirdPersonController.EnableController(true, false);
 
                 yield return new WaitForSeconds(0.5f);
 
+                // Hiding spot
                 boxCollider.isTrigger = false;
                 Event();
             }

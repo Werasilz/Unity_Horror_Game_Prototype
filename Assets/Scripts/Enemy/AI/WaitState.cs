@@ -19,7 +19,7 @@ public class WaitState : AIStateMachine
             StopCoroutine(waitCoroutine);
         }
 
-        // Start wating
+        // Start waiting
         waitCoroutine = StartCoroutine(Wait());
 
         IEnumerator Wait()

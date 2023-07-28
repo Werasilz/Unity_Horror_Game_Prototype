@@ -20,6 +20,13 @@ public class ChaseState : AIStateMachine
     {
         if (enemyAI.player != null)
         {
+            if (enemyAI.player.isHiding)
+            {
+                enemyAI.SetState(AIStateEnum.Wait);
+                enemyAI.PatrolFindClosetWaypoint();
+                return;
+            }
+
             // Chasing player
             enemyAI.Agent.SetDestination(enemyAI.player.transform.position);
 
@@ -42,17 +49,7 @@ public class ChaseState : AIStateMachine
                 if (enemyAI.player == null)
                 {
                     enemyAI.SetState(AIStateEnum.Wait);
-
-                    // Find closet waypoint for patrol state
-                    if (enemyAI.stateMachines[1] is PatrolState)
-                    {
-                        PatrolState patrolStateInstance = (PatrolState)enemyAI.stateMachines[1];
-                        patrolStateInstance.FindClosetWaypoint();
-                    }
-                    else
-                    {
-                        Debug.LogError("State Machine index[1] is not Patrol state");
-                    }
+                    enemyAI.PatrolFindClosetWaypoint();
                 }
                 // In the first time player is out of the chasing area but player is come back into the chasing area again -*-
                 else

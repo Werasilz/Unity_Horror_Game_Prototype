@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
     public AIStateMachine[] stateMachines;
 
     [Header("Target")]
-    public GameObject player;
+    public PlayerCore player;
 
     [Header("Scan Settings")]
     [SerializeField] private float scanRadius;
@@ -28,17 +28,7 @@ public class EnemyAI : MonoBehaviour
 
         // Start the state by waiting
         SetState(AIStateEnum.Wait);
-
-        // Find closet waypoint for patrol state
-        if (stateMachines[1] is PatrolState)
-        {
-            PatrolState patrolStateInstance = (PatrolState)stateMachines[1];
-            patrolStateInstance.FindClosetWaypoint();
-        }
-        else
-        {
-            Debug.LogError("State Machine index[1] is not Patrol state");
-        }
+        PatrolFindClosetWaypoint();
     }
 
     private void Update()
@@ -86,7 +76,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public GameObject FindPlayer()
+    public PlayerCore FindPlayer()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, scanRadius, playerLayer);
 
@@ -94,11 +84,25 @@ public class EnemyAI : MonoBehaviour
         {
             for (int i = 0; i < colliders.Length; i++)
             {
-                return colliders[i].gameObject;
+                return colliders[i].GetComponent<PlayerCore>();
             }
         }
 
         return null;
+    }
+
+    public void PatrolFindClosetWaypoint()
+    {
+        // Find closet waypoint for patrol state
+        if (stateMachines[1] is PatrolState)
+        {
+            PatrolState patrolStateInstance = (PatrolState)stateMachines[1];
+            patrolStateInstance.FindClosetWaypoint();
+        }
+        else
+        {
+            Debug.LogError("State Machine index[1] is not Patrol state");
+        }
     }
 
 #if UNITY_EDITOR

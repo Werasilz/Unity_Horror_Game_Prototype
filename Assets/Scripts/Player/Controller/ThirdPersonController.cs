@@ -104,6 +104,7 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController _controller;
     private PlayerControllerInputAction _input;
     private GameObject _mainCamera;
+    private PlayerCore _playerCore;
 
     private const float _threshold = 0.01f;
 
@@ -136,6 +137,7 @@ public class ThirdPersonController : MonoBehaviour
 
         _hasAnimator = TryGetComponent(out _animator);
         _controller = GetComponent<CharacterController>();
+        _playerCore = GetComponent<PlayerCore>();
         _input = PlayerControllerInputAction.Instance;
         print(_input);
 #if ENABLE_INPUT_SYSTEM
@@ -220,10 +222,13 @@ public class ThirdPersonController : MonoBehaviour
             if (_animator.GetBool(_animIDCrouch))
             {
                 _animator.SetBool(_animIDCrouch, false);
+                _playerCore.isCrouching = false;
+
             }
             else
             {
                 _animator.SetBool(_animIDCrouch, true);
+                _playerCore.isCrouching = true;
             }
         }
 
@@ -386,19 +391,19 @@ public class ThirdPersonController : MonoBehaviour
         LockCameraPosition = lockCamera;
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-        Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+    // private void OnDrawGizmosSelected()
+    // {
+    //     Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+    //     Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-        if (Grounded) Gizmos.color = transparentGreen;
-        else Gizmos.color = transparentRed;
+    //     if (Grounded) Gizmos.color = transparentGreen;
+    //     else Gizmos.color = transparentRed;
 
-        // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-        Gizmos.DrawSphere(
-            new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
-            GroundedRadius);
-    }
+    //     // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+    //     Gizmos.DrawSphere(
+    //         new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
+    //         GroundedRadius);
+    // }
 
     private void OnFootstep(AnimationEvent animationEvent)
     {
