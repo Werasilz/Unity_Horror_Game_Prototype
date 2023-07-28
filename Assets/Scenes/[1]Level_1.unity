@@ -38647,6 +38647,9 @@ MonoBehaviour:
   CameraAngleOverride: 0
   LockCameraPosition: 0
   character: {fileID: 3837663350133664635}
+  head: {fileID: 6044159111452707687}
+  overHeadOffset: 0.2
+  overHeadRadius: 0.5
 --- !u!143 &4416926083347132233
 CharacterController:
   m_ObjectHideFlags: 0

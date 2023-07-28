@@ -73,6 +73,11 @@ public class ThirdPersonController : MonoBehaviour
     [Header("Player Character")]
     public GameObject character;
 
+    [Header("Player Over Head")]
+    public Transform head;
+    public float overHeadOffset;
+    public float overHeadRadius;
+
     // cinemachine
     private float _cinemachineTargetYaw;
     private float _cinemachineTargetPitch;
@@ -192,6 +197,12 @@ public class ThirdPersonController : MonoBehaviour
         }
     }
 
+    private bool OverHeadCheck()
+    {
+        Vector3 spherePosition = new Vector3(head.position.x, head.position.y + overHeadOffset, head.position.z);
+        return Physics.CheckSphere(spherePosition, overHeadRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+    }
+
     private void CameraRotation()
     {
         if (Time.timeScale == 0) return;
@@ -219,7 +230,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         if (_input.crouch && GameManager.Instance.canCrouch)
         {
-            if (_animator.GetBool(_animIDCrouch))
+            if (_animator.GetBool(_animIDCrouch) && OverHeadCheck() == false)
             {
                 _animator.SetBool(_animIDCrouch, false);
                 _playerCore.isCrouching = false;
@@ -396,19 +407,23 @@ public class ThirdPersonController : MonoBehaviour
         LockCameraPosition = lockCamera;
     }
 
-    // private void OnDrawGizmosSelected()
-    // {
-    //     Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-    //     Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+    private void OnDrawGizmosSelected()
+    {
+        // Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+        // Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-    //     if (Grounded) Gizmos.color = transparentGreen;
-    //     else Gizmos.color = transparentRed;
+        // if (Grounded) Gizmos.color = transparentGreen;
+        // else Gizmos.color = transparentRed;
 
-    //     // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-    //     Gizmos.DrawSphere(
-    //         new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
-    //         GroundedRadius);
-    // }
+        // // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+        // Gizmos.DrawSphere(
+        //     new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
+        //     GroundedRadius);
+
+        Gizmos.color = Color.green;
+        Vector3 spherePosition = new Vector3(head.position.x, head.position.y + overHeadOffset, head.position.z);
+        Gizmos.DrawWireSphere(spherePosition, overHeadRadius);
+    }
 
     private void OnFootstep(AnimationEvent animationEvent)
     {
