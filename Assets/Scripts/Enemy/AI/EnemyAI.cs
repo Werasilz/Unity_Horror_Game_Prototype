@@ -20,6 +20,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float scanRadius;
     [SerializeField] private LayerMask playerLayer;
 
+    [Header("Debug")]
+    public bool shownArea;
+
     private void Start()
     {
         m_enemyController = GetComponent<EnemyController>();
@@ -108,8 +111,16 @@ public class EnemyAI : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, scanRadius);
+        if (shownArea)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, scanRadius);
+
+            if (Agent != null)
+            {
+                Gizmos.DrawWireSphere(transform.position, Agent.stoppingDistance);
+            }
+        }
     }
 #endif
 }

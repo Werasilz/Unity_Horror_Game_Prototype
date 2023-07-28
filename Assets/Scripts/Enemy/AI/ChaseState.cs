@@ -20,20 +20,20 @@ public class ChaseState : AIStateMachine
     {
         if (enemyAI.player != null)
         {
-            if (enemyAI.player.isHiding)
-            {
-                enemyAI.SetState(AIStateEnum.Wait);
-                enemyAI.PatrolFindClosetWaypoint();
-                return;
-            }
-
             // Chasing player
             enemyAI.Agent.SetDestination(enemyAI.player.transform.position);
 
             // Player is in the chasing area
             if (enemyAI.Agent.remainingDistance < chaseDistance)
             {
-                // Reached the distance to attack the player
+                if (enemyAI.player.isHiding)
+                {
+                    // print("Ghost seen the player hiding at distance: " + enemyAI.Agent.remainingDistance.ToString());
+                    enemyAI.Agent.SetDestination(enemyAI.player.currentHidingSpot.exitPoint.position);
+                }
+
+                // If player is not hiding, Reached the distance to attack the player
+                // If player is hiding, Reached the front of hiding spot
                 if (enemyAI.Agent.remainingDistance <= enemyAI.Agent.stoppingDistance)
                 {
                     enemyAI.SetState(AIStateEnum.Attack);
@@ -42,6 +42,14 @@ public class ChaseState : AIStateMachine
             // Player is out of the chasing area
             else
             {
+                if (enemyAI.player.isHiding)
+                {
+                    // Player is hiding successful, back to waiting state
+                    enemyAI.SetState(AIStateEnum.Wait);
+                    enemyAI.PatrolFindClosetWaypoint();
+                    return;
+                }
+
                 // Find player again
                 enemyAI.player = enemyAI.FindPlayer();
 
@@ -63,8 +71,11 @@ public class ChaseState : AIStateMachine
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        if (enemyAI.shownArea)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        }
     }
 #endif
 }

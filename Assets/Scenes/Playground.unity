@@ -17606,6 +17606,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  shownArea: 1
 --- !u!195 &6154631259272320942
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17620,7 +17621,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 200
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -18437,6 +18438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4eab6032d56ee46b128bea02447ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHiding: 0
+  isCrouching: 0
 --- !u!4 &6983258930626336602
 Transform:
   m_ObjectHideFlags: 0

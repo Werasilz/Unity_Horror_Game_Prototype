@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class HideInteraction : Interactable
 {
     private InteractionType interactionType = InteractionType.Hide;
+    public Transform exitPoint;
     [SerializeField] private Collider boxCollider;
-    [SerializeField] private Transform exitPoint;
     private PlayerInteraction playerInteraction;
     private bool isHiding;
 
@@ -95,6 +95,7 @@ public class HideInteraction : Interactable
 
                 // Player
                 playerCore.isHiding = true;
+                playerCore.currentHidingSpot = this;
                 thirdPersonController.EnableController(false, false);
                 thirdPersonController.transform.position = transform.position;
             }
@@ -104,6 +105,7 @@ public class HideInteraction : Interactable
 
                 // Player
                 playerCore.isHiding = false;
+                playerCore.currentHidingSpot = null;
                 thirdPersonController.transform.position = exitPoint.position;
                 thirdPersonController.EnableController(true, false);
 
