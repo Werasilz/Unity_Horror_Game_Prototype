@@ -93,6 +93,13 @@ public class PlayerControllerInputAction : SceneSingleton<PlayerControllerInputA
         Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
+    public void HideCursor(bool showCursor)
+    {
+        cursorLocked = showCursor;
+        cursorInputForLook = showCursor;
+        SetCursorState(cursorLocked);
+    }
+
     private void LateUpdate()
     {
         crouch = false;

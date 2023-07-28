@@ -20,6 +20,7 @@ public class AttackState : AIStateMachine
             enemyAI.SetState(AIStateEnum.Wait);
             yield return new WaitForSeconds(1f);
             catchPlayerCamera.enabled = false;
+            GameManager.Instance.GameOver();
         }
     }
 
