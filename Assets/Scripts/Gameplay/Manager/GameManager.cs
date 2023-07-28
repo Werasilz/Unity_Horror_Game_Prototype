@@ -9,9 +9,25 @@ public class GameManager : SceneSingleton<GameManager>
     [Header("Game Over GUI")]
     [SerializeField] private GameObject gameOverWindow;
 
+    [Header("Gameplay Flag")]
+    public bool canCrouch;
+    public bool canSprint;
+
     private void Start()
     {
         currentGameState = GameState.Gameplay;
+        canCrouch = false;
+        canSprint = false;
+    }
+
+    public void CanCrouch(bool value)
+    {
+        canCrouch = value;
+    }
+
+    public void CanSprint(bool value)
+    {
+        canSprint = value;
     }
 
     public void GameOver()

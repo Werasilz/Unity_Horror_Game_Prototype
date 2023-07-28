@@ -2907,6 +2907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentGameState: 1
   gameOverWindow: {fileID: 242059529}
+  canCrouch: 0
+  canSprint: 0
 --- !u!4 &366332604
 Transform:
   m_ObjectHideFlags: 0
@@ -20278,26 +20280,36 @@ PrefabInstance:
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1931028889}
+      objectReference: {fileID: 366332603}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1931028889}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1597051669302708488}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
@@ -20312,27 +20324,57 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EnableWindow
+      value: CanCrouch
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NotificationWindow, Assembly-CSharp
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: NotificationWindow, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: Press "C" to crouch
       objectReference: {fileID: 0}
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
@@ -20343,6 +20385,11 @@ PrefabInstance:
     - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
         type: 3}
       propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6426619979003931454, guid: ec2ec02db469beb45bc7f4ed8a6c7235,
+        type: 3}
+      propertyPath: eventActions.Array.data[0].action.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

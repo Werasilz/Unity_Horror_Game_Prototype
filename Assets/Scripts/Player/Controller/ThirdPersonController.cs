@@ -217,7 +217,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Move()
     {
-        if (_input.crouch)
+        if (_input.crouch && GameManager.Instance.canCrouch)
         {
             if (_animator.GetBool(_animIDCrouch))
             {
@@ -246,7 +246,7 @@ public class ThirdPersonController : MonoBehaviour
         }
         else
         {
-            targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            targetSpeed = _input.sprint && GameManager.Instance.canSprint ? SprintSpeed : MoveSpeed;
         }
 
         // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
