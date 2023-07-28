@@ -21,6 +21,12 @@ public class PlayerInventory : SceneSingleton<PlayerInventory>
 
     public void RemoveItem(Item removeItem)
     {
-        items.Remove(removeItem);
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].itemName == removeItem.itemName)
+            {
+                items.Remove(items[i]);
+            }
+        }
     }
 }
