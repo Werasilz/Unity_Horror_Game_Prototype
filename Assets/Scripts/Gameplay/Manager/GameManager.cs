@@ -41,12 +41,12 @@ public class GameManager : SceneSingleton<GameManager>
 
     public void Restart(int sceneIndex)
     {
-        PlayerControllerInputAction.Instance.HideCursor(true);
         LoadLevel(sceneIndex);
     }
 
     public void LoadLevel(int sceneIndex)
     {
+        PlayerControllerInputAction.Instance.HideCursor(false);
         SceneManager.LoadScene(sceneIndex);
     }
 

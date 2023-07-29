@@ -26,6 +26,7 @@ public class PuzzleNumberWindow : SceneSingleton<PuzzleNumberWindow>
 
     public void DisableWindow()
     {
+        Time.timeScale = 1;
         required_Numbers = null;
         clicked_Numbers = new();
         window.SetActive(false);

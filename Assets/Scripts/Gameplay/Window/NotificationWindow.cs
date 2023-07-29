@@ -16,7 +16,7 @@ public class NotificationWindow : SceneSingleton<NotificationWindow>
         {
             window.SetActive(true);
             text_Notification.text = notification;
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
             window.SetActive(false);
             text_Notification.text = "";
         }
