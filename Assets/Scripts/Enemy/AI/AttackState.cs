@@ -16,6 +16,7 @@ public class AttackState : AIStateMachine
             catchPlayerCamera.enabled = true;
             enemyAI.player.GetComponent<ThirdPersonController>().EnableController(false, true, false);
             enemyAI.Animator.SetTrigger("Attack");
+            SoundManager.Instance.PlaySoundEffect(2);
             yield return new WaitForSeconds(2.5f);
             enemyAI.SetState(AIStateEnum.Wait);
             yield return new WaitForSeconds(1f);
