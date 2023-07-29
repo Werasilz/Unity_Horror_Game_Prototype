@@ -18,6 +18,8 @@ public class GameManager : SceneSingleton<GameManager>
         currentGameState = GameState.Gameplay;
         canCrouch = false;
         canSprint = false;
+
+        PlayerControllerInputAction.Instance.HideCursor(true);
     }
 
     public void CanCrouch(bool value)
