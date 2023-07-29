@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08d90cd65456f584d8cfeaeefc469d82, type: 3}
-  m_Name: 5_Dialogue
+  m_Name: 6_Dialogue_Wrong
   m_EditorClassIdentifier: 
-  dialogueIndex: 5
+  dialogueIndex: 6
   dialogueSets:
   - delay: 2
-    dialogue: That's the exit
+    dialogue: Wrong

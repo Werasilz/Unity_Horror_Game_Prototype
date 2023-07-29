@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d90cd65456f584d8cfeaeefc469d82, type: 3}
   m_Name: 4_Dialogue
   m_EditorClassIdentifier: 
-  dialogueIndex: 3
+  dialogueIndex: 4
   dialogueSets:
   - delay: 2
     dialogue: Why isn't anyone here?

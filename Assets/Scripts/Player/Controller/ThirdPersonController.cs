@@ -399,11 +399,11 @@ public class ThirdPersonController : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
-    public void EnableController(bool value, bool lockCamera)
+    public void EnableController(bool enableController, bool lockCamera, bool enableCharacter)
     {
-        _animator.enabled = value;
-        _controller.enabled = value;
-        character.SetActive(value);
+        _animator.enabled = enableController;
+        _controller.enabled = enableController;
+        character.SetActive(enableCharacter);
         LockCameraPosition = lockCamera;
     }
 

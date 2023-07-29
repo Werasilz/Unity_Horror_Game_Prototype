@@ -14,7 +14,7 @@ public class AttackState : AIStateMachine
         IEnumerator CatchPlayer()
         {
             catchPlayerCamera.enabled = true;
-            enemyAI.player.GetComponent<ThirdPersonController>().EnableController(false, true);
+            enemyAI.player.GetComponent<ThirdPersonController>().EnableController(false, true, false);
             enemyAI.Animator.SetTrigger("Attack");
             yield return new WaitForSeconds(2.5f);
             enemyAI.SetState(AIStateEnum.Wait);

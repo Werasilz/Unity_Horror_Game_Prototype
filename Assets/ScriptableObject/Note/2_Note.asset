@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d90cd65456f584d8cfeaeefc469d82, type: 3}
-  m_Name: 5_Dialogue
+  m_Script: {fileID: 11500000, guid: 97f622b3cf29ca14e9c9d22a3c63e0d9, type: 3}
+  m_Name: 2_Note
   m_EditorClassIdentifier: 
-  dialogueIndex: 5
-  dialogueSets:
-  - delay: 2
-    dialogue: That's the exit
+  header: The Shepherd
+  description: The shepherd had 4 sheep, but 2 were eaten by the wolves and later
+    gave birth to 3 more lambs.

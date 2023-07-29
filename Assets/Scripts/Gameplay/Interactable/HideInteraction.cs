@@ -96,7 +96,7 @@ public class HideInteraction : Interactable
                 // Player
                 playerCore.isHiding = true;
                 playerCore.currentHidingSpot = this;
-                thirdPersonController.EnableController(false, false);
+                thirdPersonController.EnableController(false, false, false);
                 thirdPersonController.transform.position = transform.position;
             }
             else
@@ -107,7 +107,7 @@ public class HideInteraction : Interactable
                 playerCore.isHiding = false;
                 playerCore.currentHidingSpot = null;
                 thirdPersonController.transform.position = exitPoint.position;
-                thirdPersonController.EnableController(true, false);
+                thirdPersonController.EnableController(true, false, true);
 
                 yield return new WaitForSeconds(0.5f);
 
