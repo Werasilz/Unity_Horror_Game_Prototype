@@ -18,7 +18,7 @@ public class KeyChecker : MonoBehaviour
                 if (isEventAction == false && correctEventActions.Length > 0)
                 {
                     StartCoroutine(StartEvent(correctEventActions));
-                    break;
+                    return;
                 }
             }
         }
