@@ -37,10 +37,15 @@ public class GameManager : SceneSingleton<GameManager>
         PlayerControllerInputAction.Instance.HideCursor(false);
     }
 
-    public void Restart()
+    public void Restart(int sceneIndex)
     {
         PlayerControllerInputAction.Instance.HideCursor(true);
-        SceneManager.LoadScene(0);
+        LoadLevel(sceneIndex);
+    }
+
+    public void LoadLevel(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void OnEnable()
